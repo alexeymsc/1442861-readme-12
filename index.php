@@ -15,7 +15,7 @@ if (!in_array($chosen_type, array_column($types, 'type'), true) and $chosen_type
 $sql_posts = 'SELECT post.id,post.date_created, header, type, 
     content_text,cite_author,content_media,views, avatar,username, 
     COUNT(distinct comment.content) as comments_number,COUNT(like_post.id) as likes
-        FROM post 
+        FROM post  
         JOIN user ON user_id = user.id 
         JOIN content_type ON content_type_id = content_type.id
         LEFT JOIN comment on post.id = comment.post_id
