@@ -350,3 +350,24 @@ function call_404 ($message,$user_name,$is_auth)  {
     $page = include_template('layout.php', ['content' => $content, 'page_name' => 'УПС','is_auth' => $is_auth, 'user_name' =>$user_name,]);
     die ($page);
 }
+
+/**
+ * ОПИСАНИЕ ФУНКЦИИ ВАЛИДАЦИИ
+ * @param $message сообщение об ошибке, идентифицирующее неправильный запрос
+ * @param $wrong_var переменная, которая указана некорректно 
+ * @param $user_name имя пользователя для шапки страницы
+ */
+
+ function validateMime (string $filepath, array $required_types) {
+    $finfo = new finfo(FILEINFO_MIME_TYPE);
+    $mimetype = $finfo->buffer($filepath);
+
+    if (!in_array($mimetype,$required_types)){
+        return "Указан неверный тип файла. Загрузите изображение формата .jpg, .png, .gif";
+    };
+
+    return null;
+    // return $mimetype;
+ }
+
+
